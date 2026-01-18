@@ -17,6 +17,7 @@ public class Frame extends JFrame {
         add(canvas);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
 
     }
 

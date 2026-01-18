@@ -23,6 +23,7 @@ public class Logik {
     int points = 0;
     int time = 0;
     long startTime;
+    boolean changedDirection = false;
 
     public Logik(int width, int height){
         this.width = width;
@@ -31,6 +32,7 @@ public class Logik {
         keyListener = new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                if(changedDirection) return;
                 int value = e.getKeyCode();
                 switch (value){
                     case KeyEvent.VK_W:    // "W"
@@ -50,6 +52,7 @@ public class Logik {
                         direction = 3;
                         break;
                 }
+                changedDirection = true;
             }
         };
 
@@ -110,6 +113,7 @@ public class Logik {
                     points++;
                 }
             }
+            changedDirection = false;
         });
         timer.start();
     }

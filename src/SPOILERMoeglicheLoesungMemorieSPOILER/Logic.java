@@ -24,7 +24,17 @@ public class Logic {
         this.width = width;
         this.height = height;
 
-        cards.add(new Card(7, new Point(padding, padding)));
+        ArrayList<Integer> usedSymbole = new ArrayList<>();
+        for (int i = 0; i < height; i++) {
+            for(int j = 0; j < width;j++) {
+                    int temp = -1;
+                do {
+                    temp = (int) (Math.random() * 7);
+                } while(usedSymbole.contains(temp));
+                    usedSymbole.add(temp);
+                    cards.add(new Card(temp, new Point(padding + j * cardWidth + j * padding / 2, padding + i * cardHeight + i * padding / 2)));
+            }
+        }
     }
 
 }
